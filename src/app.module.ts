@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Event } from './events/events.entity';
 import { EventsModule } from './events/events.module';
 import { AppJapanService } from './add.japan.service';
 import { AppDummy } from './app.dummy';

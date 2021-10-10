@@ -19,7 +19,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateEventDto } from './dto/create-event.dto'
 import { UpdateEventDto } from './dto/update-event.dto'
-import { Event } from './events.entity'
+import { Event } from './entities/events.entity'
 
 @Controller({ path: '/events' })
 export class EventsController {
@@ -52,6 +52,13 @@ export class EventsController {
       ],
       take: 2,
       order: { id: 'DESC' }
+    })
+  }
+
+  @Get('/practice_read_related_entities/:id')
+  async practice2 (@Param('id', ParseIntPipe) id: number) {
+    return await this.repository.findOne(id, {
+      relations: ['attendees']
     })
   }
 
