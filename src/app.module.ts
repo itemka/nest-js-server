@@ -3,8 +3,9 @@ import * as dotenv from 'dotenv'
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { EventsController } from './events.controller';
+import { EventsController } from './events/events.controller';
 import { AppService } from './app.service';
+import { Event } from './events/events.entity';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env')
@@ -27,6 +28,8 @@ const {
       username: MYSQL_USERNAME,
       password: MYSQL_PASSWORD,
       database: MYSQL_DATABASE,
+      entities: [Event],
+      synchronize: true,
     })
   ],
   controllers: [
