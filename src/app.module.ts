@@ -30,7 +30,8 @@ const {
       database: MYSQL_DATABASE,
       entities: [Event],
       synchronize: true,
-    })
+    }),
+    TypeOrmModule.forFeature([Event])
   ],
   controllers: [
     AppController,
