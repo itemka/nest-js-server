@@ -7,6 +7,7 @@ import {
   Param,
   Body,
   HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common'
 import {
   Like,
@@ -47,11 +48,12 @@ export class EventsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id) {
+  async findOne(@Param('id', ParseIntPipe) id: number) {
     return await this.repository.findOne(id)
   }
 
   @Post()
+  // validate by groups: @Body(new ValidationPipe({ groups: ['create'] }))
   async create(@Body() input: CreateEventDto) {
     return await this.repository.save({
       ...input,
